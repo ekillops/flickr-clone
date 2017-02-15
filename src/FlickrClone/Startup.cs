@@ -32,13 +32,13 @@ namespace FlickrClone
 
         public void Configure(IApplicationBuilder app)
         {
-            
+            app.UseStaticFiles();
             app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Signup}/{id?}");
             });        
         }
     }
