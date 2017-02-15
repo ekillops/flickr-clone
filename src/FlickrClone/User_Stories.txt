@@ -1,0 +1,21 @@
+﻿
+
+As an administrator, I want to be able to create and manage user roles, so that I can moderate user activity.
+
+As a user, I want be able to create an account.
+
+As a user, I want to be able to add photos.
+
+As a user, I want have a profile page with my photos listed.
+
+As a user, I want to tag my friends in my photos.
+
+As a user, I want to select my favorite photos, to keep track of photos I like.
+
+As a user, I want all my favorite photos accesible on my profile.
+
+As a user, I want to be able to leave comments about photos I view.
+
+As a user, I want to be able to remove and/or edit photos and comments I have added.
+
+As an administrator I want to be able to remove and/or edit comments and photos from users.
