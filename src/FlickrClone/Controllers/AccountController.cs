@@ -62,7 +62,6 @@ namespace FlickrClone.Controllers
             }
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

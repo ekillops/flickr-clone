@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using FlickrClone.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FlickrClone.Controllers
 {
-
+    [Authorize(Roles = "Administrator")]
     public class RolesController : Controller
     {
 
@@ -44,7 +45,8 @@ namespace FlickrClone.Controllers
             {
                 _db.Roles.Add(new IdentityRole()
                 {
-                    Name = roleName
+                    Name = roleName,
+                    NormalizedName = roleName.ToUpper()
                 });
                 _db.SaveChanges();
                 return RedirectToAction("Index", "Home");
@@ -63,9 +65,9 @@ namespace FlickrClone.Controllers
         public async Task<ActionResult> Assign(string userName, string userRole)
         {
             ApplicationUser user = _db.Users.FirstOrDefault(u => u.UserName == userName);
-            IdentityResult addRole = await _userManager.AddToRoleAsync(user, userRole);
+            var userResult = await _userManager.AddToRoleAsync(user, userRole);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
     }
 }
