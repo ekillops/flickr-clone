@@ -8,11 +8,15 @@ using FlickrClone.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Moq;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlickrClone.Tests
 {
     public class FlickrCloneTest
     {
+
         [Fact]
         public void Tests_Run()
         {
@@ -20,16 +24,18 @@ namespace FlickrClone.Tests
         }
 
 
-        // Home Tests
-        [Fact]
-        public void Home_View_Result_Index_Test()
-        {
-            //Arrange, Act
-            ViewResult indexView = new HomeController().Index() as ViewResult;
+        //// Home Tests
+        //[Fact]
+        //public void Home_View_Result_Index_Test()
+        //{
+        //    //Arrange, Act
+        //    ViewResult indexView = new HomeController().Index() as ViewResult;
 
-            //Assert
-            Assert.IsType<ViewResult>(indexView);
-        }
+        //    //Assert
+        //    Assert.IsType<ViewResult>(indexView);
+        //}
+        ////
+
 
 
         //// Account Tests

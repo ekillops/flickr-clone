@@ -37,7 +37,7 @@
                         {
                             <li><span class="grey-text">@User.Identity.Name</span></li>
                             <li><a asp-controller="Account" asp-action="Logout">Log Out</a></li>
-                            <li><a href="#">View Profile</a></li>
+                            <li><a asp-controller="Home" asp-action="Profile">View Profile</a></li>
                             @if (User.IsInRole("Administrator"))
                             {
                                 
@@ -57,7 +57,7 @@
                         @if(User.Identity.IsAuthenticated)
                         {
                             <li><a asp-controller="Account" asp-action="Logout">Log Out</a></li>
-                            <li><a href="#">View Profile</a></li>
+                            <li><a asp-controller="Home" asp-action="Profile">View Profile</a></li>
 
                         }
                         else

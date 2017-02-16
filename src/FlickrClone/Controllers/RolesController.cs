@@ -26,7 +26,7 @@ namespace FlickrClone.Controllers
             _signInManager = signInManager;
             _db = db;
         }
-
+        
         public IActionResult Index()
         {
             List<IdentityRole> roles = _db.Roles.ToList();

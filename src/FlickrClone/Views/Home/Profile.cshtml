@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Profile";
+}
+
+@using System.Security.Claims
+
+<h2>Hello, @User.Identity.Name</h2>
+
+<p>Here are your photos:</p>
