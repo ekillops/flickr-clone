@@ -9,7 +9,10 @@ namespace FlickrClone.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
- 
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

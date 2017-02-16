@@ -38,7 +38,7 @@ namespace FlickrClone
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Signup}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });        
         }
     }

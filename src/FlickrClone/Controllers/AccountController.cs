@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FlickrClone.Models;
 using Microsoft.AspNetCore.Identity;
@@ -32,7 +29,7 @@ namespace FlickrClone.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Signup (RegisterViewModel model)
+        public async Task<IActionResult> Signup(RegisterViewModel model)
         {
             var user = new ApplicationUser { UserName = model.Email };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
@@ -63,6 +60,13 @@ namespace FlickrClone.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }
