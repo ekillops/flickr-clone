@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Photos";
+}
+@using FlickrClone.Models
+@model List<Photo>
+
+<h3>Photos</h3>
+<br />
+@if(Model != null)
+{
+    @foreach (var photo in Model)
+    {
+        <div class="card">
+            <div class="card-image">
+                <img src="@photo.getImage()">
+                @*<span class="card-title">Card Title</span>*@
+            </div>
+            <div class="card-content">
+                <p>
+                   @photo.Name
+                </p>
+            </div>
+            @*<div class="card-action">
+                <a href="#">This is a link</a>
+            </div>*@
+        </div>
+    }
+}

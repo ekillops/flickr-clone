@@ -9,6 +9,7 @@ namespace FlickrClone.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Photo> Photos { get; set; }
         public ApplicationDbContext()
         {
         }
