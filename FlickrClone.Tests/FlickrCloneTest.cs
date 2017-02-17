@@ -24,19 +24,6 @@ namespace FlickrClone.Tests
         }
 
 
-        //// Home Tests
-        //[Fact]
-        //public void Home_View_Result_Index_Test()
-        //{
-        //    //Arrange, Act
-        //    ViewResult indexView = new HomeController().Index() as ViewResult;
-
-        //    //Assert
-        //    Assert.IsType<ViewResult>(indexView);
-        //}
-        ////
-
-
 
         //// Account Tests
         //[Fact]

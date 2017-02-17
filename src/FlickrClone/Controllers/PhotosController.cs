@@ -27,6 +27,11 @@ namespace FlickrClone.Controllers
             _db = db;
         }
 
+        public PhotosController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
         public IActionResult Index()
         {
             var photos = _db.Photos.ToList();
