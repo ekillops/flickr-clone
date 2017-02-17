@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FlickrClone.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     public class RolesController : Controller
     {
 

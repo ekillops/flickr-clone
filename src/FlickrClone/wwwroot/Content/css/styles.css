@@ -1,2 +1,14 @@
-﻿body {
+﻿div.list-row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width:  100%;
+    justify-content: center;
+}
+
+div.card {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
 }

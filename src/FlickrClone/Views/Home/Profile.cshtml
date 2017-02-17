@@ -2,9 +2,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Profile";
 }
-
+@using FlickrClone.Models
 @using System.Security.Claims
+
+@model List<Photo>
 
 <h2>Hello, @User.Identity.Name</h2>
 
 <p>Here are your photos:</p>
+
+@foreach (var photo in Model)
+{
+    <div class="row">
+        <div class="col m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="@photo.getImage()">
+                    @*<span class="card-title">Card Title</span>*@
+                </div>
+                <div class="card-content">
+                    <p>
+                        @photo.Name
+                    </p>
+                </div>
+                @*<div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+}

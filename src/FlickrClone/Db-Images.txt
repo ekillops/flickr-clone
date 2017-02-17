@@ -1,0 +1,46 @@
+﻿//// ASP ACTION
+ 
+  [HttpPost]
+	public IActionResult Create(string Name, IFormFile Data)
+	{
+		byte[] photoArray = new byte[0];
+
+		if (Data != null)
+		{
+			using (Stream fileStream = Data.OpenReadStream())
+			using (MemoryStream memoryStream = new MemoryStream())
+			{
+				fileStream.CopyTo(memoryStream);
+				photoArray = memoryStream.ToArray();
+			}
+		}
+		Photo newPhoto = new Photo(Name, photoArray);
+		_db.Photos.Add(newPhoto);
+		_db.SaveChanges();
+		return RedirectToAction("Index");
+	}
+
+
+//// HTML FORM
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file"> // <--type="file"    
+    <input type="submit" value="Upload" />
+</form>
+
+
+//// DISPLAY FUNCTION
+
+  
+    public byte[] Data { get; set; }
+
+	public string getImage()
+	{
+		// Convert byte data array to string that '<img src=' can read
+		var base64File = Convert.ToBase64String(Data);
+		return String.Format("data:image/gif;base64,{0}", base64File);
+	}
+
+//// DISPLAY HTML
+
+	<img src="@model.GetImage()">

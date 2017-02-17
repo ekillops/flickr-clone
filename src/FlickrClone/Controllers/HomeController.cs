@@ -29,12 +29,12 @@ namespace FlickrClone.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Profile()
+        public IActionResult Profile()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;
-            //ViewBag.Photos = _db.Photos.Where(ph => ph.UserId == userId);
-            return View();
+            List<Photo> photos = _db.Photos.Where(ph => ph.User.Id == userId).ToList();
+            return View(photos);
         }
 
     }

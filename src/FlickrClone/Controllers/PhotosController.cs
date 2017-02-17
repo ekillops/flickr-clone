@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using FlickrClone.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,7 +29,7 @@ namespace FlickrClone.Controllers
 
         public IActionResult Index()
         {
-            List<Photo> photos = _db.Photos.ToList();
+            var photos = _db.Photos.ToList();
             return View(photos);
         }
 
@@ -35,9 +37,10 @@ namespace FlickrClone.Controllers
         {
             return View();
         }
-
+        
+        [Authorize]
         [HttpPost]
-        public IActionResult Create(string Name, IFormFile Data)
+        public async Task<IActionResult> Create(string Name, IFormFile Data)
         {
             byte[] photoArray = new byte[0];
 
@@ -50,7 +53,13 @@ namespace FlickrClone.Controllers
                     photoArray = memoryStream.ToArray();
                 }
             }
+
             Photo newPhoto = new Photo(Name, photoArray);
+
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+            newPhoto.User = currentUser;
+
             _db.Photos.Add(newPhoto);
             _db.SaveChanges();
             return RedirectToAction("Index");
